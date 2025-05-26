@@ -9,7 +9,42 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
-      [_ in never]: never
+      pms_requirements: {
+        Row: {
+          created_at: string
+          deployment_model: string | null
+          form_data: Json
+          id: string
+          multi_property_support: boolean | null
+          submitter_name: string | null
+          target_timeline: string | null
+          updated_at: string
+          white_labeled: boolean | null
+        }
+        Insert: {
+          created_at?: string
+          deployment_model?: string | null
+          form_data: Json
+          id?: string
+          multi_property_support?: boolean | null
+          submitter_name?: string | null
+          target_timeline?: string | null
+          updated_at?: string
+          white_labeled?: boolean | null
+        }
+        Update: {
+          created_at?: string
+          deployment_model?: string | null
+          form_data?: Json
+          id?: string
+          multi_property_support?: boolean | null
+          submitter_name?: string | null
+          target_timeline?: string | null
+          updated_at?: string
+          white_labeled?: boolean | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
