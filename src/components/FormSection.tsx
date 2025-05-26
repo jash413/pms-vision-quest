@@ -26,8 +26,8 @@ const FormSection: React.FC<FormSectionProps> = ({
     const error = errors[question.id];
 
     return (
-      <div key={question.id} className="space-y-4 p-6 bg-gradient-to-r from-slate-50/50 to-blue-50/50 rounded-xl border border-slate-200/50">
-        <Label className="text-lg font-semibold text-slate-800 leading-relaxed block">
+      <div key={question.id} className="space-y-3 sm:space-y-4 p-4 sm:p-6 bg-gradient-to-r from-slate-50/50 to-blue-50/50 rounded-xl border border-slate-200/50">
+        <Label className="text-base sm:text-lg font-semibold text-slate-800 leading-relaxed block">
           {question.label}
           {question.required && <span className="text-red-500 ml-2">*</span>}
         </Label>
@@ -37,7 +37,7 @@ const FormSection: React.FC<FormSectionProps> = ({
             value={value}
             onChange={(e) => onFieldChange(question.id, e.target.value)}
             placeholder={question.placeholder}
-            className={`text-base py-3 px-4 bg-white border-2 focus:border-blue-400 transition-all duration-200 ${
+            className={`text-sm sm:text-base py-2 sm:py-3 px-3 sm:px-4 bg-white border-2 focus:border-blue-400 transition-all duration-200 ${
               error ? 'border-red-400 bg-red-50' : 'border-slate-200 hover:border-slate-300'
             }`}
           />
@@ -48,8 +48,8 @@ const FormSection: React.FC<FormSectionProps> = ({
             value={value}
             onChange={(e) => onFieldChange(question.id, e.target.value)}
             placeholder={question.placeholder}
-            rows={4}
-            className={`text-base py-3 px-4 bg-white border-2 focus:border-blue-400 transition-all duration-200 resize-none ${
+            rows={3}
+            className={`text-sm sm:text-base py-2 sm:py-3 px-3 sm:px-4 bg-white border-2 focus:border-blue-400 transition-all duration-200 resize-none ${
               error ? 'border-red-400 bg-red-50' : 'border-slate-200 hover:border-slate-300'
             }`}
           />
@@ -60,7 +60,7 @@ const FormSection: React.FC<FormSectionProps> = ({
             value={value}
             onValueChange={(newValue) => onFieldChange(question.id, newValue)}
           >
-            <SelectTrigger className={`text-base py-3 px-4 bg-white border-2 focus:border-blue-400 transition-all duration-200 ${
+            <SelectTrigger className={`text-sm sm:text-base py-2 sm:py-3 px-3 sm:px-4 bg-white border-2 focus:border-blue-400 transition-all duration-200 ${
               error ? 'border-red-400 bg-red-50' : 'border-slate-200 hover:border-slate-300'
             }`}>
               <SelectValue placeholder="Select an option" />
@@ -70,7 +70,7 @@ const FormSection: React.FC<FormSectionProps> = ({
                 <SelectItem 
                   key={option.value} 
                   value={option.value}
-                  className="text-base py-3 hover:bg-blue-50 cursor-pointer"
+                  className="text-sm sm:text-base py-2 sm:py-3 hover:bg-blue-50 cursor-pointer"
                 >
                   {option.label}
                 </SelectItem>
@@ -83,18 +83,18 @@ const FormSection: React.FC<FormSectionProps> = ({
           <RadioGroup
             value={value}
             onValueChange={(newValue) => onFieldChange(question.id, newValue)}
-            className="space-y-4"
+            className="space-y-2 sm:space-y-4"
           >
             {question.options?.map((option) => (
-              <div key={option.value} className="flex items-center space-x-3 p-3 bg-white rounded-lg border border-slate-200 hover:border-blue-300 transition-all duration-200">
+              <div key={option.value} className="flex items-center space-x-2 sm:space-x-3 p-2 sm:p-3 bg-white rounded-lg border border-slate-200 hover:border-blue-300 transition-all duration-200">
                 <RadioGroupItem 
                   value={option.value} 
                   id={`${question.id}-${option.value}`}
-                  className="border-2 border-slate-300 data-[state=checked]:border-blue-500 data-[state=checked]:bg-blue-500"
+                  className="border-2 border-slate-300 data-[state=checked]:border-blue-500 data-[state=checked]:bg-blue-500 w-4 h-4 sm:w-5 sm:h-5"
                 />
                 <Label 
                   htmlFor={`${question.id}-${option.value}`} 
-                  className="text-base font-medium text-slate-700 cursor-pointer flex-1"
+                  className="text-sm sm:text-base font-medium text-slate-700 cursor-pointer flex-1 leading-relaxed"
                 >
                   {option.label}
                 </Label>
@@ -104,9 +104,9 @@ const FormSection: React.FC<FormSectionProps> = ({
         )}
 
         {question.type === 'multiselect' && (
-          <div className="space-y-3">
+          <div className="space-y-2 sm:space-y-3">
             {question.options?.map((option) => (
-              <div key={option.value} className="flex items-center space-x-3 p-3 bg-white rounded-lg border border-slate-200 hover:border-blue-300 transition-all duration-200">
+              <div key={option.value} className="flex items-center space-x-2 sm:space-x-3 p-2 sm:p-3 bg-white rounded-lg border border-slate-200 hover:border-blue-300 transition-all duration-200">
                 <Checkbox
                   id={`${question.id}-${option.value}`}
                   checked={value.includes(option.value)}
@@ -117,11 +117,11 @@ const FormSection: React.FC<FormSectionProps> = ({
                       onFieldChange(question.id, value.filter((v: string) => v !== option.value));
                     }
                   }}
-                  className="border-2 border-slate-300 data-[state=checked]:border-blue-500 data-[state=checked]:bg-blue-500"
+                  className="border-2 border-slate-300 data-[state=checked]:border-blue-500 data-[state=checked]:bg-blue-500 w-4 h-4 sm:w-5 sm:h-5"
                 />
                 <Label 
                   htmlFor={`${question.id}-${option.value}`} 
-                  className="text-base font-medium text-slate-700 cursor-pointer flex-1"
+                  className="text-sm sm:text-base font-medium text-slate-700 cursor-pointer flex-1 leading-relaxed"
                 >
                   {option.label}
                 </Label>
@@ -131,9 +131,9 @@ const FormSection: React.FC<FormSectionProps> = ({
         )}
 
         {error && (
-          <div className="flex items-center gap-2 p-3 bg-red-50 border border-red-200 rounded-lg">
-            <span className="text-red-500">⚠</span>
-            <p className="text-sm text-red-600 font-medium">{error}</p>
+          <div className="flex items-center gap-2 p-2 sm:p-3 bg-red-50 border border-red-200 rounded-lg">
+            <span className="text-red-500 text-sm">⚠</span>
+            <p className="text-xs sm:text-sm text-red-600 font-medium">{error}</p>
           </div>
         )}
       </div>
@@ -141,7 +141,7 @@ const FormSection: React.FC<FormSectionProps> = ({
   };
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-6 sm:space-y-8">
       {section.questions.map(renderQuestion)}
     </div>
   );
