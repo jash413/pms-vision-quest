@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, CheckCircle } from "lucide-react";
 import FormSection from './FormSection';
 import { formSections } from '@/data/formSections';
 
@@ -147,7 +147,7 @@ const PMSForm: React.FC<PMSFormProps> = ({ onSubmit }) => {
             className="flex items-center gap-2 bg-green-600 hover:bg-green-700"
           >
             Submit Form
-            <CheckCircle2 className="w-4 h-4" />
+            <CheckCircle className="w-4 h-4" />
           </Button>
         ) : (
           <Button
